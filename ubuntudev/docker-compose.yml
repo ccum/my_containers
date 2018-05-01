@@ -1,0 +1,22 @@
+version: "2.2"
+
+services:
+  my_postgres_dev:
+    image: postgres:9.6-alpine
+    ports:
+     - "5432:5432"
+    depends_on:
+     - my_ubuntu_dev   
+  my_ubuntu_dev:
+    image: ubuntu:latest
+    ports:
+     - "8080:8080"
+    links:
+      - my_postgres_dev
+    volumes:
+     - "./code:/Users/cesarcueva/Documents/projects/personal/Python_Scripting"
+
+    #entrypoint: docker
+    #command: ps
+
+    
