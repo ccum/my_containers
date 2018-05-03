@@ -1,20 +1,19 @@
-version: "2.2"
-
+version: "3.2"
 services:
   my_postgres_dev:
-    image: postgres:9.6-alpine
-    ports:
-     - "5432:5432"
+    build:
+      context: .postgres/.
+    image: my_postgres_dev
     depends_on:
-     - my_ubuntu_dev   
-  my_ubuntu_dev:
-    image: ubuntu:latest
+      - my_ubuntu_dev
     ports:
-     - "8080:8080"
+      - 5432:5432
+  my_ubuntu_dev:
+    build:
+      context: .ubuntu/.
+    image: my_ubuntu_dev 
+    ports:
+     - "8000:80"
     volumes:
      - "./code:/Users/cesarcueva/Documents/projects/personal/Python_Scripting"
-
-    #entrypoint: docker
-    #command: ps
-
-    
+    command: tail -F anything
