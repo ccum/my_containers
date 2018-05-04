@@ -15,5 +15,5 @@ services:
     ports:
      - "8000:80"
     volumes:
-     - "./code:/Users/cesarcueva/Documents/projects/personal/Python_Scripting"
+     - "code:/Users/cesarcueva/Documents/projects/personal/Python_Scripting"
     command: tail -F anything
